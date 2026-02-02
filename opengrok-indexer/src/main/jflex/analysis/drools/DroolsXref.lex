@@ -18,7 +18,7 @@
  */
 
 /*
- * Copyright (c) 2025, Contributors to OpenGrok project.
+ * Copyright (c) 2026, Jonathan S. Fisher.
  * Cross reference a Drools DRL file
  */
 
@@ -140,6 +140,14 @@ File = [a-zA-Z]{FNameChar}* "." ([Jj][Aa][Vv][Aa] |
         onFilteredSymbolMatched(yytext(), yychar, Consts.kwd);
     }
     
+    /* Enter RHS mode after "then" keyword - must be before {Identifier} */
+    "then" {
+        chkLOC();
+        onFilteredSymbolMatched(yytext(), yychar, Consts.kwd);
+        braceCount = 0;
+        yypush(RHS);
+    }
+    
     /* Null-safe dereference operator */
     {NullSafeOp} {
         chkLOC();
@@ -208,14 +216,6 @@ File = [a-zA-Z]{FNameChar}* "." ([Jj][Aa][Vv][Aa] |
         yypush(SCOMMENT);
         onDisjointSpanChanged(HtmlConsts.COMMENT_CLASS, yychar);
         onNonSymbolMatched(yytext(), yychar);
-    }
-    
-    /* Enter RHS mode after "then" keyword */
-    "then" {
-        chkLOC();
-        onFilteredSymbolMatched(yytext(), yychar, Consts.kwd);
-        braceCount = 0;
-        yypush(RHS);
     }
 }
 

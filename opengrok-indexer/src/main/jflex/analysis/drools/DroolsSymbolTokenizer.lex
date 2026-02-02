@@ -18,7 +18,7 @@
  */
 
 /*
- * Copyright (c) 2025, Contributors to OpenGrok project.
+ * Copyright (c) 2026, Jonathan S. Fisher.
  * Gets Drools DRL symbols - ignores comments, strings, keywords
  */
 
@@ -94,6 +94,9 @@ import org.opengrok.indexer.analysis.JFlexSymbolMatcher;
         }
     }
     
+    /* Enter RHS after "then" keyword - must be before {Identifier} */
+    "then" { yybegin(RHS); }
+    
     /* Null-safe dereference operator - skip it */
     {NullSafeOp} { }
     
@@ -122,9 +125,6 @@ import org.opengrok.indexer.analysis.JFlexSymbolMatcher;
     \'     { yybegin(QSTRING); }
     "/*"   { yybegin(COMMENT); }
     "//"   { yybegin(SCOMMENT); }
-    
-    /* Enter RHS after "then" keyword */
-    "then" { yybegin(RHS); }
 }
 
 <RULEDEF> {

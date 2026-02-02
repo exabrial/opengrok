@@ -18,7 +18,7 @@
  */
 
 /*
- * Copyright (c) 2025, Contributors to OpenGrok project.
+ * Copyright (c) 2026, Jonathan S. Fisher.
  */
 package org.opengrok.indexer.analysis.drools;
 
@@ -40,7 +40,7 @@ public class DroolsAnalyzer extends AbstractSourceCodeAnalyzer {
      * Creates a new instance of DroolsAnalyzer.
      * @param factory defined instance for the analyzer
      */
-    protected DroolsAnalyzer(AnalyzerFactory factory) {
+    protected DroolsAnalyzer(final AnalyzerFactory factory) {
         super(factory, () -> new JFlexTokenizer(new DroolsSymbolTokenizer(
                 AbstractAnalyzer.DUMMY_READER)));
     }
@@ -70,7 +70,7 @@ public class DroolsAnalyzer extends AbstractSourceCodeAnalyzer {
      * @return a defined instance
      */
     @Override
-    protected JFlexXref newXref(Reader reader) {
+    protected JFlexXref newXref(final Reader reader) {
         return new JFlexXref(new DroolsXref(reader));
     }
 

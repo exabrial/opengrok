@@ -18,7 +18,7 @@
  */
 
 /*
- * Copyright (c) 2025, Contributors to OpenGrok project.
+ * Copyright (c) 2026, Jonathan S. Fisher.
  */
 package org.opengrok.indexer.analysis.drools;
 
