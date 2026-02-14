@@ -74,6 +74,7 @@ import org.opengrok.indexer.analysis.data.IgnorantAnalyzerFactory;
 import org.opengrok.indexer.analysis.data.ImageAnalyzerFactory;
 import org.opengrok.indexer.analysis.document.MandocAnalyzerFactory;
 import org.opengrok.indexer.analysis.document.TroffAnalyzerFactory;
+import org.opengrok.indexer.analysis.drools.DroolsAnalyzerFactory;
 import org.opengrok.indexer.analysis.eiffel.EiffelAnalyzerFactory;
 import org.opengrok.indexer.analysis.erlang.ErlangAnalyzerFactory;
 import org.opengrok.indexer.analysis.executables.ELFAnalyzerFactory;
@@ -310,6 +311,7 @@ public class AnalyzerGuru {
                 new HCLAnalyzerFactory(),
                 new TerraformAnalyzerFactory(),
                 new RAnalyzerFactory(),
+                new DroolsAnalyzerFactory(),
                 // Keep PlainAnalyzer last, with its lone, quite fuzzy matcher.
                 PlainAnalyzerFactory.DEFAULT_INSTANCE
             };
